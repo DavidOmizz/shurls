@@ -216,18 +216,10 @@ if(header){
 const shortenBtn = document.querySelector("[data-shorten-btn]");
 const inputedLink = document.querySelector("[data-link]");
 const contForAllInput = document.querySelector(".services-check");
-
 const urlSectionErrorMessage = document.querySelector(".url-section-error")
-// urlSectionErrorMessage.style.color = "red";
-// urlSectionErrorMessage.style.fontSize = "10px";
-// urlSectionErrorMessage.style.textAlign = "left"
-// urlSectionErrorMessage.style.marginLeft = "25px"
-// urlSectionErrorMessage.style.marginTop = "-7px"
-
 
 const shortenUrl = async () => {
   if (inputedLink.value != "") {
-    // alert('hyyy')
     const linkBefore = document.createElement("input");
     const linkAfter = document.createElement("input");
     const copyLinkBtn = document.createElement("button");
@@ -256,6 +248,9 @@ const shortenUrl = async () => {
     inputCont.appendChild(linkAfter);
     inputCont.appendChild(copyLinkBtn);
     contForAllInput.appendChild(inputCont);
+
+    // Clear the input field's value
+    inputedLink.value = '';
 
     // Get the created button
     const btnCopyLink = inputCont.querySelector("[data-btn-copy-link]");
@@ -307,12 +302,9 @@ const shortenUrl = async () => {
   }
 };
 
-
-const check = ()=> {
-    alert('hey there');
-}
-
 shortenBtn.addEventListener("click", shortenUrl);
+
+
 
 //   function copyPassword() {
 //     var copyText = document.getElementById("getText");
@@ -321,3 +313,214 @@ shortenBtn.addEventListener("click", shortenUrl);
 //     alert('Text copied')
 //     console.log(copyText.value);
 // }
+
+
+// const shortenBtn = document.querySelector("[data-shorten-btn]");
+// const inputedLink = document.querySelector("[data-link]");
+// const contForAllInput = document.querySelector(".services-check");
+// const urlSectionErrorMessage = document.querySelector(".url-section-error");
+
+// const shortenUrl = async () => {
+//   if (inputedLink.value != "") {
+//     // Store the input value before clearing
+//     const inputValue = inputedLink.value;
+
+//     const linkBefore = document.createElement("input");
+//     const linkAfter = document.createElement("input");
+//     const copyLinkBtn = document.createElement("button");
+
+//     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputValue}`)
+//     const data = await response.json();
+//     console.log(data.result.full_short_link);
+
+//     const inputCont = document.createElement("div");
+//     inputCont.classList.add("services-input");
+
+//     linkBefore.value = inputValue;
+//     const textValue = inputValue;
+//     linkAfter.value = data.result.full_short_link;
+//     copyLinkBtn.textContent = "Copy";
+
+//     linkBefore.type = "text";
+//     linkBefore.id = "Input1";
+
+//     copyLinkBtn.setAttribute("data-btn-copy-link", "");
+//     linkAfter.setAttribute("data-input-link", "");
+
+//     inputCont.appendChild(linkBefore);
+//     inputCont.appendChild(linkAfter);
+//     inputCont.appendChild(copyLinkBtn);
+//     contForAllInput.appendChild(inputCont);
+
+//     // Clear the input field's value
+//     inputedLink.value = '';
+
+//     // Get the created button
+//     const btnCopyLink = inputCont.querySelector("[data-btn-copy-link]");
+
+//     btnCopyLink.addEventListener("click", () => {
+//       const linkValue = linkAfter.value;
+//       const tempTextarea = document.createElement("textarea");
+//       tempTextarea.value = linkValue;
+//       document.body.appendChild(tempTextarea);
+//       tempTextarea.select();
+//       document.execCommand("copy");
+//       document.body.removeChild(tempTextarea);
+
+//       btnCopyLink.textContent = "Copied!";
+//       btnCopyLink.classList.add("btn-copied");
+
+//       setTimeout(() => {
+//         btnCopyLink.textContent = "Copy";
+//         btnCopyLink.classList.remove("btn-copied");
+//       }, 3000); // Reset after 3 seconds
+//     });
+//   } else {
+//     alert("Please Enter a link");
+//     inputedLink.classList.add('active')
+//     urlSectionErrorMessage.innerHTML = "Please Enter a link"
+//   }
+// };
+
+// shortenBtn.addEventListener("click", shortenUrl);
+
+
+// const shortenBtn = document.querySelector("[data-shorten-btn]");
+// const inputedLink = document.querySelector("[data-link]");
+// const contForAllInput = document.querySelector(".services-check");
+// const urlSectionErrorMessage = document.querySelector(".url-section-error");
+
+// const shortenUrl = async () => {
+//   if (inputedLink.value != "") {
+//     // Store the input value before clearing
+//     const inputValue = inputedLink.value;
+
+//     const linkBefore = document.createElement("input");
+//     const linkAfter = document.createElement("input");
+//     const copyLinkBtn = document.createElement("button");
+
+//     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputValue}`)
+//     const data = await response.json();
+//     console.log(data.result.full_short_link);
+
+//     const inputCont = document.createElement("div");
+//     inputCont.classList.add("services-input");
+
+//     linkBefore.value = inputValue;
+//     const textValue = inputValue;
+//     linkAfter.value = data.result.full_short_link;
+//     copyLinkBtn.textContent = "Copy";
+
+//     linkBefore.type = "text";
+//     linkBefore.id = "Input1";
+
+//     copyLinkBtn.setAttribute("data-btn-copy-link", "");
+//     linkAfter.setAttribute("data-input-link", "");
+
+//     inputCont.appendChild(linkBefore);
+//     inputCont.appendChild(linkAfter);
+//     inputCont.appendChild(copyLinkBtn);
+//     contForAllInput.appendChild(inputCont);
+
+//     // Clear the input field's value with a delay
+//     setTimeout(() => {
+//       inputedLink.value = '';
+//     }, 100);
+
+//     // Get the created button
+//     const btnCopyLink = inputCont.querySelector("[data-btn-copy-link]");
+
+//     btnCopyLink.addEventListener("click", () => {
+//       const linkValue = linkAfter.value;
+//       const tempTextarea = document.createElement("textarea");
+//       tempTextarea.value = linkValue;
+//       document.body.appendChild(tempTextarea);
+//       tempTextarea.select();
+//       document.execCommand("copy");
+//       document.body.removeChild(tempTextarea);
+
+//       btnCopyLink.textContent = "Copied!";
+//       btnCopyLink.classList.add("btn-copied");
+
+//       setTimeout(() => {
+//         btnCopyLink.textContent = "Copy";
+//         btnCopyLink.classList.remove("btn-copied");
+//       }, 3000); // Reset after 3 seconds
+//     });
+//   } else {
+//     alert("Please Enter a link");
+//     inputedLink.classList.add('active')
+//     urlSectionErrorMessage.innerHTML = "Please Enter a link"
+//   }
+// };
+
+// shortenBtn.addEventListener("click", shortenUrl);
+
+
+// const shortenUrl = async () => {
+//   if (inputedLink.value != "") {
+//     // Store the input value before clearing
+//     const inputValue = inputedLink.value;
+
+//     const linkBefore = document.createElement("input");
+//     const linkAfter = document.createElement("input");
+//     const copyLinkBtn = document.createElement("button");
+
+//     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputValue}`)
+//     const data = await response.json();
+//     console.log(data.result.full_short_link);
+
+//     const inputCont = document.createElement("div");
+//     inputCont.classList.add("services-input");
+
+//     linkBefore.value = inputValue;
+//     const textValue = inputValue;
+//     linkAfter.value = data.result.full_short_link;
+//     copyLinkBtn.textContent = "Copy";
+
+//     linkBefore.type = "text";
+//     linkBefore.id = "Input1";
+
+//     copyLinkBtn.setAttribute("data-btn-copy-link", "");
+//     linkAfter.setAttribute("data-input-link", "");
+
+//     inputCont.appendChild(linkBefore);
+//     inputCont.appendChild(linkAfter);
+//     inputCont.appendChild(copyLinkBtn);
+//     contForAllInput.appendChild(inputCont);
+
+//     // Clear the input field's value with a delay
+//     setTimeout(() => {
+//       inputedLink.value = '';
+//     }, 500); // Delay for 500 milliseconds
+
+//     // Get the created button
+//     const btnCopyLink = inputCont.querySelector("[data-btn-copy-link]");
+
+//     btnCopyLink.addEventListener("click", () => {
+//       const linkValue = linkAfter.value;
+//       const tempTextarea = document.createElement("textarea");
+//       tempTextarea.value = linkValue;
+//       document.body.appendChild(tempTextarea);
+//       tempTextarea.select();
+//       document.execCommand("copy");
+//       document.body.removeChild(tempTextarea);
+
+//       btnCopyLink.textContent = "Copied!";
+//       btnCopyLink.classList.add("btn-copied");
+
+//       setTimeout(() => {
+//         btnCopyLink.textContent = "Copy";
+//         btnCopyLink.classList.remove("btn-copied");
+//       }, 3000); // Reset after 3 seconds
+//     });
+//   } else {
+//     alert("Please Enter a link");
+//     inputedLink.classList.add('active')
+//     urlSectionErrorMessage.innerHTML = "Please Enter a link"
+//   }
+// };
+
+// shortenBtn.addEventListener("click", shortenUrl);
+
+

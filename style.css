@@ -148,17 +148,19 @@ main {
 
 .hero-text button {
     background-color: hsl(180, 66%, 49%);
-    border: none;
+    border: 1px solid transparent;
     border-radius: 25px;
     padding: 12px 25px 12px 25px;
     color: white;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 5px;
 }
 .hero-text button:hover {
-    color:hsl(180, 66%, 20%);
-    color: white;
-    cursor: pointer;
+    /* background-color: hsl(180, 66%, 20%); */
+    background-color: transparent;
+    border: 1px solid hsl(180, 66%, 20%);
+    color: hsl(257, 27%, 26%);
 }
 .main-illustration {
     /* background-color: red; */
@@ -324,7 +326,7 @@ main {
 .offer-box p {
     color: hsl(0, 0%, 50%);
     margin-top: 20px;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 .offer-2 {
@@ -361,13 +363,18 @@ main {
 }
 .call-to-action button {
     background-color: hsl(180, 66%, 49%);
-    border: none;
+    border: 1px solid transparent;
     border-radius: 25px;
     padding: 10px 25px 10px 25px;
     color: white;
     font-weight: 700;
     margin-top: 20px;
 
+}
+.call-to-action button:hover {
+    background-color: transparent;
+    border: 1px solid hsl(180, 66%, 49%);
+    /* color: hsl(257, 27%, 26%); */
 }
 
 footer {
