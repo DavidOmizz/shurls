@@ -221,13 +221,20 @@ const urlSectionErrorMessage = document.querySelector(".url-section-error")
 const shortenUrl = async () => {
   if (inputedLink.value != "") {
     const linkBefore = document.createElement("input");
-    const linkAfter = document.createElement("input");
+    // const linkAfter = document.createElement("input");
+    const linkAfter = document.createElement("a"); 
     const copyLinkBtn = document.createElement("button");
     
-    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputedLink.value}`)
+    // const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputedLink.value}`)
+    const response = await fetch("http://127.0.0.1:8000/api/shorten/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ url: inputedLink.value })
+    });
     const data = await response.json();
-    // const shortUrl = data.result.full_short_link;
-    console.log(data.result.full_short_link);
+    console.log(data.short_url);
 
     const inputCont = document.createElement("div");
     inputCont.classList.add("services-input");
@@ -235,14 +242,19 @@ const shortenUrl = async () => {
     // linkBefore.value = 'Hello World';
     linkBefore.value = inputedLink.value;
     const textValue = inputedLink.value;
-    linkAfter.value = data.result.full_short_link;
+    linkAfter.value = data.short_url;
     copyLinkBtn.textContent = "Copy";
 
     linkBefore.type = "text";
     linkBefore.id = "Input1";
 
     copyLinkBtn.setAttribute("data-btn-copy-link", "");
-    linkAfter.setAttribute("data-input-link", "");
+    // linkAfter.setAttribute("data-input-link", "");
+
+    linkAfter.href = data.short_url;                // set the URL
+    linkAfter.textContent = data.short_url;        // visible text
+    linkAfter.target = "_blank";                   // open in new tab
+    linkAfter.setAttribute("data-link-anchor", "");
 
     inputCont.appendChild(linkBefore);
     inputCont.appendChild(linkAfter);
@@ -257,7 +269,8 @@ const shortenUrl = async () => {
 
     // Add click event listener to the created button
     btnCopyLink.addEventListener("click", () => {
-      const linkValue = linkAfter.value;
+      // const linkValue = linkAfter.value;
+      const linkValue = linkAfter.href;
       const tempTextarea = document.createElement("textarea");
       tempTextarea.value = linkValue;
       document.body.appendChild(tempTextarea);
