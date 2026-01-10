@@ -226,7 +226,8 @@ const shortenUrl = async () => {
     const copyLinkBtn = document.createElement("button");
     
     // const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${inputedLink.value}`)
-    const response = await fetch("http://127.0.0.1:8000/api/shorten/", {
+    // const response = await fetch("http://127.0.0.1:8000/api/shorten/", {
+    const response = await fetch("https://shurls-backend.onrender.com/api/shorten/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
